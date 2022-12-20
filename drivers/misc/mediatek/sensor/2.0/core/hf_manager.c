@@ -1144,7 +1144,7 @@ static uint32_t awinic_debug_data[3] = { 0 };
 //uint32_t *(* awinic_debug_g_val)(void) = NULL;
 //EXPORT_SYMBOL_GPL(awinic_debug_g_val);
 
-static uint32_t *awinic_get_global_val()
+uint32_t *awinic_get_global_val(void)
 {
 	return &awinic_debug_data[0];
 }

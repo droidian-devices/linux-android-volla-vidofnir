@@ -35,9 +35,6 @@ static const unsigned int usb_extcon_cable[] = {
 	EXTCON_NONE,
 };
 
-struct mtk_extcon_info * g_extcon = NULL;//prize
-static struct delayed_work delay_work_t;//prize
-	
 static void mtk_usb_extcon_update_role(struct work_struct *work)
 {
 	struct usb_role_info *role = container_of(to_delayed_work(work),
@@ -105,27 +102,6 @@ static int mtk_usb_extcon_set_role(struct mtk_extcon_info *extcon,
 
 	return 0;
 }
-
-
-int sc89601a_set_roal(int a)//prize
-{
-	if(!g_extcon){
-		pr_err("gezi g_extcon is NULL,return..........\n");
-		return -1;
-	}
-	
-	pr_err("gezi mtk_usb_extcon_set_role.....a = %d..\n",a);
-	if(a){
-		mtk_usb_extcon_set_role(g_extcon,USB_ROLE_DEVICE);
-	}
-	else{
-		mtk_usb_extcon_set_role(g_extcon,USB_ROLE_NONE);
-	}
-	
-	return 0;
-}
-EXPORT_SYMBOL(sc89601a_set_roal);
-
 
 static bool usb_is_online(struct mtk_extcon_info *extcon)
 {
@@ -655,8 +631,6 @@ static int mtk_usb_extcon_probe(struct platform_device *pdev)
 #endif
 
 	platform_set_drvdata(pdev, extcon);
-	
-	g_extcon = extcon;//prize
 
 	return 0;
 }
@@ -691,25 +665,12 @@ static struct platform_driver mtk_usb_extcon_driver = {
 	},
 };
 
-static void delay_work_work(struct work_struct *work)//prize
-{
-	platform_driver_register(&mtk_usb_extcon_driver);
-}
-
-
 static int __init mtk_usb_extcon_init(void)
 {
-	printk("gezi---------mtk_usb_extcon_init\n");//prize
-	 
-	INIT_DELAYED_WORK(&delay_work_t, delay_work_work);//prize
-	
-	schedule_delayed_work(&delay_work_t, msecs_to_jiffies(5000));//prize
-	
-	return 0;
-	 
-	//return platform_driver_register(&mtk_usb_extcon_driver);//prize
+	 printk("gezi---------mtk_usb_extcon_init\n");
+	return platform_driver_register(&mtk_usb_extcon_driver);
 }
-late_initcall_sync(mtk_usb_extcon_init);//prize
+late_initcall(mtk_usb_extcon_init);
 
 static void __exit mtk_usb_extcon_exit(void)
 {

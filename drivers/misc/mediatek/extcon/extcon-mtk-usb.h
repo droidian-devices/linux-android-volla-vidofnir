@@ -45,5 +45,3 @@ enum {
 	DUAL_PROP_PR_NONE,
 };
 
-extern int sc89601a_set_roal(int a);
-

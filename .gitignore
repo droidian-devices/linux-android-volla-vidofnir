@@ -71,9 +71,13 @@ modules.order
 /*.spec
 
 #
-# Debian directory (make deb-pkg)
+# Debian extras
 #
-/debian/
+/debian/linux-*
+/debian/path-override
+/debian/changelog
+/debian/files
+/debian/debhelper-build-stamp
 
 #
 # Snap directory (make snap-pkg)
@@ -155,3 +159,6 @@ x509.genkey
 
 # Documentation toolchain
 sphinx_*/
+
+# Build directory
+/out/

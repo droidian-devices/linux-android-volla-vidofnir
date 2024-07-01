@@ -1690,18 +1690,20 @@ static ssize_t flashlight_torch_store(struct device *dev,
 		mutex_unlock(&fl_mutex);
 
 		//FLASH_IOC_SET_TIME_OUT_TIME_MS
-		// fl_dev_arg.arg = FLASHLIGHT_TORCH_TIMEOUT;
-		// if (fdev->ops->flashlight_ioctl(FLASH_IOC_SET_TIME_OUT_TIME_MS,
-				// (unsigned long)&fl_dev_arg)) {
-			// pr_err("Failed to set timeout\n");
-			// return -EFAULT;
-		// }
+		//fl_dev_arg.arg = FLASHLIGHT_TORCH_TIMEOUT;
+		//if (fdev->ops->flashlight_ioctl(FLASH_IOC_SET_TIME_OUT_TIME_MS,
+		//		(unsigned long)&fl_dev_arg)) {
+		//	pr_err("Failed to set timeout\n");
+		//	return -EFAULT;
+		//}
 
 		//FLASH_IOC_SET_ONOFF
-		// fl_dev_arg.arg = torch_flag;
-		// mutex_lock(&fl_mutex);
-		// ret = fl_enable(fdev, fl_dev_arg.arg);
-		// mutex_unlock(&fl_mutex);
+		fl_dev_arg.arg = torch_flag;
+		mutex_lock(&fl_mutex);
+		ret = fl_enable(fdev, fl_dev_arg.arg);
+		mutex_unlock(&fl_mutex);
+
+		return size;
 	} else {
 		pr_err("Failed with no flashlight fdev ops \n");
 		return -EFAULT;

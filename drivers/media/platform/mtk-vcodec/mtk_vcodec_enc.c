@@ -2208,6 +2208,8 @@ static int vb2ops_venc_start_streaming(struct vb2_queue *q, unsigned int count)
 	(param->heif_grid_size>>16), param->heif_grid_size&0xffff,
 	param->num_b_frame, param->slbc_ready, param->max_qp, param->min_qp);
 
+	kfree(param);
+
 	if (ret) {
 		mtk_v4l2_err("venc_if_set_param failed=%d", ret);
 		ctx->state = MTK_STATE_ABORT;

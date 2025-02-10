@@ -2140,7 +2140,7 @@ int tcpc_typec_handle_cc_change(struct tcpc_device *tcpc)
 //drv add by lipengpeng 20230315 start C to C connection charging and data disconnection
 		mdelay(30);
 //drv add by lipengpeng 20230315 end  C to C connection charging and data disconnection
-		//set_otg_en_t(1);
+		set_otg_en_t(1);
 		
 		typec_disable_low_power_mode(tcpc);
 		typec_attach_wait_entry(tcpc);

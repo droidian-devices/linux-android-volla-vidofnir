@@ -122,8 +122,14 @@ static inline int typec_enable_low_power_mode(
 
 static inline int typec_enable_vconn(struct tcpc_device *tcpc)
 {
-	if (!typec_is_sink_with_emark())
-		return 0;
+	if (!typec_is_sink_with_emark()) {
+		TCPC_DBG("Cable doesn't have emark chipset\n");
+		// Set DRP and RP level to 1.5A if no emark chip is found and default rp_level is 3.0A
+		if (tcpm_inquire_typec_local_rp(tcpc) == 2)
+			tcpm_typec_set_rp_level(tcpc, 1);
+		if (tcpc->typec_local_cc == TYPEC_CC_DRP_3_0)
+			tcpci_set_cc(tcpc, TYPEC_CC_DRP_1_5);
+	}
 
 #if CONFIG_TCPC_VCONN_SUPPLY_MODE
 	if (tcpc->tcpc_vconn_supply == TCPC_VCONN_SUPPLY_NEVER)

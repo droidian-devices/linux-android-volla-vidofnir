@@ -11,7 +11,7 @@ VARIANT = android
 KERNEL_BASE_VERSION = 5.10.160
 
 # The kernel cmdline to use
-KERNEL_BOOTIMAGE_CMDLINE = bootopt=64S3,32N2,64N2 droidian.lvm.prefer
+KERNEL_BOOTIMAGE_CMDLINE =
 
 # Slug for the device vendor. This is going to be used in the KERNELRELASE
 # and package names.
@@ -86,6 +86,7 @@ KERNEL_BOOTIMAGE_KERNEL_OFFSET = 0x40000000
 KERNEL_BOOTIMAGE_INITRAMFS_OFFSET = 0x66f00000
 KERNEL_BOOTIMAGE_TAGS_OFFSET = 0x47c80000
 KERNEL_BOOTIMAGE_DTB_OFFSET = 0x47c80000
+KERNEL_BOOTIMAGE_SECONDIMAGE_OFFSET = 0x00000000
 
 # Specify boot image security patch level if needed
 KERNEL_BOOTIMAGE_PATCH_LEVEL = 2022-06
@@ -107,6 +108,13 @@ KERNEL_BOOTIMAGE_VERSION = 4
 # All non-gki devices need a gzip (gz) initramfs
 # For devices launched with a GKI kernel it can be either gzip (gz) or lz4 (lz4)
 KERNEL_INITRAMFS_COMPRESSION = lz4
+
+# Whether to generate a vendor_boot image. Supported since
+# bootimage version 3.
+KERNEL_BOOTIMAGE_GENERATE_VENDOR_BOOT = 1
+
+# The cmdline for the vendor_boot image
+KERNEL_BOOTIMAGE_VENDOR_CMDLINE = bootopt=64S3,32N2,64N2
 
 ########################################################################
 # Android verified boot

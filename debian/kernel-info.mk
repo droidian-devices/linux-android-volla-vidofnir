@@ -44,7 +44,7 @@ KERNEL_DEFCONFIG = droidian.config
 
 # Whether to include DTBs with the image. Use 0 (no) or 1.
 # GKI devices should set this to 0
-KERNEL_IMAGE_WITH_DTB = 0
+KERNEL_IMAGE_WITH_DTB = 1
 
 # Path to the DTB
 # If you leave this undefined, an attempt to find it automatically
@@ -114,7 +114,7 @@ KERNEL_INITRAMFS_COMPRESSION = lz4
 KERNEL_BOOTIMAGE_GENERATE_VENDOR_BOOT = 1
 
 # The cmdline for the vendor_boot image
-KERNEL_BOOTIMAGE_VENDOR_CMDLINE = bootopt=64S3,32N2,64N2
+KERNEL_BOOTIMAGE_VENDOR_CMDLINE = bootopt=64S3,32N2,64N2 datapart=/dev/disk/by-partlabel/userdata
 
 ########################################################################
 # Android verified boot

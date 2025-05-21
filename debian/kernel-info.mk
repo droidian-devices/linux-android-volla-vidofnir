@@ -161,21 +161,21 @@ FLASH_USE_TELNET = 0
 # Device manufacturer. This must match the `ro.product.vendor.manufacturer`
 # Android property. If you don't want to specify this, leave it undefined,
 # FLASH_INFO_CPU will be checked instead.
-FLASH_INFO_MANUFACTURER = Vendor
+FLASH_INFO_MANUFACTURER = Gigaset
 
 # Device model. This must match the `ro.product.vendor.model`
 # Android property. If you don't want to specify this, leave it undefined,
 # FLASH_INFO_CPU will be checked instead.
-FLASH_INFO_MODEL = Device1
+FLASH_INFO_MODEL = E940-2797-00
 
 # Device CPU. This will be grepped against /proc/cpuinfo to check if
 # we're running on the specific device. Note this is a last-resort
 # method, specifying FLASH_INFO_MANUFACTURER and FLASH_INFO_MODEL is
 # recommended.
-FLASH_INFO_CPU = My Fictional System-on-a-Chip
+FLASH_INFO_CPU =
 
 # Space-separated list of supported device ids as reported by fastboot
-FLASH_INFO_DEVICE_IDS = model1 model2
+FLASH_INFO_DEVICE_IDS = k6789v1_64
 
 ########################################################################
 # Kernel build settings

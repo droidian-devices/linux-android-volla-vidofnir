@@ -162,3 +162,6 @@ sphinx_*/
 
 # Build directory
 /out/
+
+# Droidian change
+!.gitignore

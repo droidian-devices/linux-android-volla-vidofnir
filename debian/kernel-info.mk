@@ -21,14 +21,14 @@ DEVICE_VENDOR = volla
 DEVICE_MODEL = vidofnir
 
 # Slug for the device platform. If unsure, keep this commented.
-# DEVICE_PLATFORM = platform
+DEVICE_PLATFORM = gx4
 
 # Marketing-friendly full-name. This will be used inside package descriptions
 DEVICE_FULL_NAME = Volla Phone X23
 
 # Whether to use configuration fragments to augment the kernel configuration.
 # If unsure, keep this to 0.
-KERNEL_CONFIG_USE_FRAGMENTS = 0
+KERNEL_CONFIG_USE_FRAGMENTS = 1
 
 # Whether to use diffconfig to generate the device-specific configuration.
 # If you enable this, you should set KERNEL_CONFIG_USE_FRAGMENTS to 1.
@@ -40,7 +40,7 @@ KERNEL_CONFIG_USE_DIFFCONFIG = 0
 # KERNEL_PRODUCT_DIFFCONFIG = my_diffconfig
 
 # Defconfig to use
-KERNEL_DEFCONFIG = droidian.config
+KERNEL_DEFCONFIG = gki_defconfig
 
 # Whether to include DTBs with the image. Use 0 (no) or 1.
 # GKI devices should set this to 0

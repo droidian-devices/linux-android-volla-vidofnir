@@ -33,6 +33,7 @@ Vcs-Git: https://github.com/droidian-devices/linux-android-volla-vidofnir.git
 Package: linux-image-5.10.168-volla-vidofnir
 Architecture: arm64
 Depends: ${misc:Depends}
+Conflicts: linux-image-5.10.160-volla-vidofnir
 Description: Linux kernel for Volla Phone X23
  This package contains the Linux kernel for the Volla Phone X23 device.
  .
@@ -45,6 +46,7 @@ Architecture: arm64
 Pre-Depends: flash-bootimage (>= 4)
 Depends: ${misc:Depends},
          linux-image-5.10.168-volla-vidofnir (= ${binary:Version})
+Conflicts: linux-bootimage-5.10.160-volla-vidofnir
 Description: Linux kernel for Volla Phone X23 - Android Boot Image
  This package contains the Linux kernel for the Volla Phone X23 device.
  .
@@ -55,6 +57,7 @@ Package: linux-headers-5.10.168-volla-vidofnir
 Architecture: arm64
 Depends: ${misc:Depends},
          linux-image-5.10.168-volla-vidofnir (= ${binary:Version})
+Conflicts: linux-headers-5.10.160-volla-vidofnir
 Description: Linux kernel for Volla Phone X23 - Headers
  This package contains the Linux kernel headers for the Volla Phone X23 device.
 
